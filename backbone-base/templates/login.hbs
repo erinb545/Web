@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Login</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script>
+      $(document)
+          .ready(function() {
+            $('.ui.form')
+              .form({
+                fields: {
+                  email: {
+                    identifier  : 'email',
+                    rules: [
+                      {
+                        type   : 'empty',
+                        prompt : 'Please enter your username'
+                      }
+                    ]
+                  },
+                  password: {
+                    identifier  : 'password',
+                    rules: [
+                      {
+                        type   : 'empty',
+                        prompt : 'Please enter your password'
+                      },
+                      {
+                        type   : 'length[6]',
+                        prompt : 'Your password must contain at least 6 characters'
+                      }
+                    ]
+                  }
+                }
+              })
+            ;
+          })
+        ;
+    </script>
+
+  </head>
+  <body>
+    <div class="ui middle aligned center aligned grid">
+      <div class="login column">
+        <h1 class="ui header">
+          <img src="img/logo.png" class="ui small image">
+          <div class="content">
+            Log In
+          </div>
+        </h1>
+        <form action="/login" method="post" class="ui large form">
+          <div class="ui raised segment">
+            <div class="field">
+              <div class="ui left icon corner labeled input">
+                <i class="user icon"></i>
+                <input type="text" name="email" placeholder="Username">
+                <div class="ui corner label">
+                  <i class="asterisk icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <div class="ui left icon corner labeled input">
+                <i class="lock icon"></i>
+                <input type="password" name="password" placeholder="Password">
+                <div class="ui corner label">
+                  <i class="asterisk icon"></i>
+                </div>
+              </div>
+            </div>
+            <div class="ui fluid large submit primary button">Log In</div>
+          </div>
+          <div class="ui message">
+            <a class="" href="">I forgot my password</a>
+          </div>
+          <div class="ui error message"></div>
+
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

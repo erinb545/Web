@@ -1,0 +1,27 @@
+{
+  "name": "backbone-react-base",
+  "authors": [
+    "fitz303 <erin.fitzhenry@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~15.3.0",
+    "jsx-requirejs-plugin": "~0.6.2",
+    "text": "requirejs-text#~2.0.15",
+    "requirejs": "~2.2.0",
+    "backbone": "~1.3.3",
+    "backbone.subroute": "~0.4.6",
+    "bootstrap": "~3.3.7"
+  }
+}
