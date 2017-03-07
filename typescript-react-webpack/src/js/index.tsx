@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import {Router, Route, Link, browserHistory} from 'react-router';
 
 import {Content1} from './views/Content1';
-import {Content2} from './views/Content2';
+import {LeafletView} from './views/LeafletView';
 import {Help} from './views/Help';
 import {Header} from './views/Header';
 import {MainView} from './views/MainView';
@@ -20,7 +20,7 @@ ReactDOM.render(
         <Route path="/" component={MainView}>
             <Route path="one" components={{content: () => <Content1 model={content1MainModel} />}}>
             </Route>
-            <Route path="two" components={{content: Content2}}>
+            <Route path="leaflet" components={{content: LeafletView}}>
             </Route>
             <Route path="help" components={{content: Help}}>
             </Route>

@@ -16,7 +16,7 @@ export class Header extends React.Component<HeaderProps, {}> {
                     <div className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">
                             <li><Link to="/one">Content 1</Link></li>
-                            <li><Link to="/two">Content 2</Link></li>
+                            <li><Link to="/leaflet">Leaflet</Link></li>
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
                             <li><Link to="/help">Help</Link></li>
