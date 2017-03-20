@@ -22,8 +22,8 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
 
     private map:any = null;
-    private projection:any = null;
-    private mainGroup:d3.Selection<any>;
+    private overlayProjection:any = null;
+    private overlaySelection:any = null;
 
     /**
      * When the div is rendered into the DOM.
@@ -57,9 +57,14 @@ export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
 
         // Pick up the SVG from the map object
         var svg = d3.select('.leaflet.map').select('svg');
-        this.mainGroup = svg.append('g');
+        svg.append('g');
 
-        this.renderD3();
+        let self = this;
+        L.d3SvgOverlay((selection:any, projection:any) => {
+            self.overlayProjection = projection;
+            self.overlaySelection = selection;
+            this.renderD3();
+        }).addTo(this.map);
     }
 
     componentWillUnmount() {
@@ -75,7 +80,7 @@ export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
 
     renderD3() {
 
-        this.mainGroup.append('circle')
+        this.overlaySelection.append('circle')
             .attr('r', 100)
             .attr('cx', 10)
             .attr('cy', 10)
