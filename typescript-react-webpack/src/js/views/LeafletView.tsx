@@ -22,8 +22,6 @@ import '../../../node_modules/leaflet/dist/leaflet.css';
 export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
 
     private map:any = null;
-    private overlayProjection:any = null;
-    private overlaySelection:any = null;
 
     /**
      * When the div is rendered into the DOM.
@@ -45,7 +43,7 @@ export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
                 L.tileLayer.provider('CartoDB.DarkMatter')
             ],
             attributionControl: false,
-            center: [45.67,-121.12], 
+            center: [47.6062,-122.3321], 
             zoom: 8
         });
 
@@ -61,9 +59,7 @@ export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
 
         let self = this;
         L.d3SvgOverlay((selection:any, projection:any) => {
-            self.overlayProjection = projection;
-            self.overlaySelection = selection;
-            this.renderD3();
+            this.renderD3(selection, projection);
         }).addTo(this.map);
     }
 
@@ -78,13 +74,17 @@ export class LeafletView extends BackboneReactComponent<LeafletViewModel, {}> {
         return <div id="leaflet-view" className="leaflet map view" />
     }
 
-    renderD3() {
+    renderD3(selection:any, projection:any) {
 
-        this.overlaySelection.append('circle')
-            .attr('r', 100)
-            .attr('cx', 10)
-            .attr('cy', 10)
-            .style('fill', 'green');
+        // Create a circle over Seattle
+        let point = projection.latLngToLayerPoint(new L.LatLng(47.6062, -122.3321));
+
+        selection.append('circle')
+            .attr('r', 20)
+            .attr('cx', point.x)
+            .attr('cy', point.y)
+            .style('fill', 'green')
+            .append('title').text('This is a tooltip!');
     }
 
     onMapClick() {
