@@ -1,5 +1,5 @@
-npm install -g typescript
-npm install -g typings
-npm install
-webpack --watch
-node server.js
+> npm install -g typescript \n
+> npm install -g typings \n
+> npm install \n
+> webpack --watch \n
+> node server.js \n
